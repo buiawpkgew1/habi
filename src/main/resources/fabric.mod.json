@@ -19,12 +19,11 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-        "net.fabricmc.example.ExampleMod"
+      "net.fabricmc.example.ExampleMod"
     ]
   },
   "mixins": [
-      "modid.mixins.json",
-      "mixins.baritone-meteor.json"
+    "modid.mixins.json"
   ],
 
   "depends": {
