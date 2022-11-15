@@ -1,7 +1,7 @@
 package net.fabricmc.example.api.utils.gui;
 
-import net.minecraft.client.gui.toasts.GuiToast;
 import net.minecraft.client.gui.toasts.IToast;
+import net.minecraft.client.gui.toasts.GuiToast;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
