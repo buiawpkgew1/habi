@@ -19,10 +19,10 @@ public class BaritoneToast implements IToast{
         this.totalShowTime=totalShowTime;
     }
     public Visibility draw(GuiToast toastGui, long delta) {
-                if (this.newDisplay) {
-                        this.firstDrawTime = delta;
-                        this.newDisplay = false;
-                    }
+        if (this.newDisplay) {
+            this.firstDrawTime = delta;
+            this.newDisplay = false;
+        }
         toastGui.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("textures/gui/toasts.png"));
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 255.0f);
                 toastGui.drawTexturedModalRect(0, 0, 0, 32, 160, 32);
