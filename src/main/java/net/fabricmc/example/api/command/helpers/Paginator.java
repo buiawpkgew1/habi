@@ -3,6 +3,7 @@ package net.fabricmc.example.api.command.helpers;
 import baritone.api.command.argument.IArgConsumer;
 import baritone.api.command.exception.CommandException;
 import baritone.api.command.exception.CommandInvalidTypeException;
+import net.minecraft.client.resource.language.I18n;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
@@ -64,7 +65,7 @@ public class Paginator<E> implements Helper {
             ))
             .setHoverEvent(new HoverEvent(
                     HoverEvent.Action.SHOW_TEXT,
-                    new TextComponentString("Click to view previous page")
+                    new TextComponentString(I18n.hasTranslation("next.page"))
             ));
         } else {
             prevPageComponent.getStyle().setColor(TextFormatting.DARK_GRAY);
