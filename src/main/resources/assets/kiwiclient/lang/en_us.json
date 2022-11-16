@@ -1,5 +1,3 @@
 {
-  "kiwiclient.zoom": "Zoom",
-    "discord.welcome":"Welcome",
-    "discord.rpc":"Discord RPC Callback"
+  "kiwiclient.zoom": "Zoom"
 }

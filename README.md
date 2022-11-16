@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">KiwiClient</h1>
-/jar://G:/gradle/caches/modules-2/files-2.1/com.github.buiawpkgew1.baritone/baritone-fabric/a565b5ff33/6dd7f19857fe77fa2f080730826aba8d6935f8c6/baritone-fabric-a565b5ff33.jar/pack.mcmeta
+
 <div align="center">
     <img src="https://img.shields.io/github/last-commit/TangyKiwi/KiwiClient" alt="GitHub last commit"/>
     <img src="https://img.shields.io/github/workflow/status/TangyKiwi/KiwiClient/build" alt="Build status"/>
@@ -51,7 +51,7 @@ DiscordRPC ("_You use the hacc, then proudly quacc._")
 - Compass<br>
 - HUD<br>
 - InventoryViewer<br>
-- MountHUD<br>
+- MountHUD<br>  
 - NoScoreboard<br>
 - PotionTimers<br>
 - Time<br>
@@ -147,14 +147,14 @@ If you use **ANY** code from the source:
 
 
 ## Credits
-**Clients**:
-[Meteor Client](https://github.com/MeteorDevelopment/meteor-client)
-[BleachHack](https://github.com/BleachDrinker420/BleachHack)
-[Atomic](https://gitlab.com/0x151/atomic)
-[JexClient](https://github.com/DustinRepo/JexClient)
-[Wurst](https://github.com/Wurst-Imperium/Wurst7)
+**Clients**:  
+[Meteor Client](https://github.com/MeteorDevelopment/meteor-client)  
+[BleachHack](https://github.com/BleachDrinker420/BleachHack)  
+[Atomic](https://gitlab.com/0x151/atomic)  
+[JexClient](https://github.com/DustinRepo/JexClient)  
+[Wurst](https://github.com/Wurst-Imperium/Wurst7)  
 [Font Renderer](https://github.com/SprayDown/CustomFont-Rendering)
 
-**Resource Pack**:
-[Vanilla Tweaks](https://vanillatweaks.net/picker/resource-packs/)
+**Resource Pack**:  
+[Vanilla Tweaks](https://vanillatweaks.net/picker/resource-packs/)  
 [Kyomin's Sus Bed](https://www.mediafire.com/file/xero5355lcpa48e/%2521_%25C2%25A74Bedless_Noob_%25C2%25A7b200k_%255B128x%255D.zip/file)
