@@ -5,13 +5,13 @@
 <h1 align="center">KiwiClient</h1>
 
 <div align="center">
-    <img src="https://img.shields.io/github/last-commit/TangyKiwi/KiwiClient" alt="GitHub last commit"/>
-    <img src="https://img.shields.io/github/workflow/status/TangyKiwi/KiwiClient/build" alt="Build status"/>
+    <img src="https://img.shields.io/github/last-commit/buiawpkgew1/habi" alt="GitHub last commit"/>
+    <img src="https://img.shields.io/github/workflow/status/buiawpkgew1/habi/build" alt="Build status"/>
     <img src="https://img.shields.io/badge/MC-1.19.2-brightgreen.svg" alt="Minecraft"/>
     <br>
-    <img src="https://img.shields.io/github/v/release/TangyKiwi/KiwiClient.svg" alt="Release"/>
-    <img src="https://img.shields.io/github/languages/code-size/TangyKiwi/KiwiClient" alt="GitHub code size in bytes"/>
-    <img src="https://img.shields.io/tokei/lines/github/TangyKiwi/KiwiClient"/>
+    <img src="https://img.shields.io/github/v/release/buiawpkgew1/habi.svg" alt="Release"/>
+    <img src="https://img.shields.io/github/languages/code-size/buiawpkgew1/habi" alt="GitHub code size in bytes"/>
+    <img src="https://img.shields.io/tokei/lines/github/buiawpkgew1/habi"/>
     <br>
 </div>
 
