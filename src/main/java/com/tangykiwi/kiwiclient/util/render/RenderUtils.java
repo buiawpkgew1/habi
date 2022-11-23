@@ -63,7 +63,7 @@ public class RenderUtils {
 		BufferBuilder buffer = tessellator.getBuffer();
 
 		// Fill
-		RenderSystem.setShader(GameRenderer::getPositionColorShader);
+		RenderSystem.setShader(GameRenderer::getPositionColorProgram);
 
 		buffer.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
 		Vertexer.vertexBoxQuads(matrices, buffer, Boxes.moveToZero(box), color, excludeDirs);
@@ -92,7 +92,7 @@ public class RenderUtils {
 
 		// Outline
 		RenderSystem.disableCull();
-		RenderSystem.setShader(GameRenderer::getRenderTypeLinesShader);
+		RenderSystem.setShader(GameRenderer::getRenderTypeLinesProgram);
 		RenderSystem.lineWidth(lineWidth);
 
 		buffer.begin(VertexFormat.DrawMode.LINES, VertexFormats.LINES);
@@ -120,7 +120,7 @@ public class RenderUtils {
 		BufferBuilder buffer = tessellator.getBuffer();
 
 		// Fill
-		RenderSystem.setShader(GameRenderer::getPositionColorShader);
+		RenderSystem.setShader(GameRenderer::getPositionColorProgram);
 
 		buffer.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
 		Vertexer.vertexQuad(matrices, buffer,
@@ -151,7 +151,7 @@ public class RenderUtils {
 
 		// Outline
 		RenderSystem.disableCull();
-		RenderSystem.setShader(GameRenderer::getRenderTypeLinesShader);
+		RenderSystem.setShader(GameRenderer::getRenderTypeLinesProgram);
 		RenderSystem.lineWidth(lineWidth);
 
 		buffer.begin(VertexFormat.DrawMode.LINES, VertexFormats.LINES);
@@ -182,7 +182,7 @@ public class RenderUtils {
 		// Line
 		RenderSystem.disableDepthTest();
 		RenderSystem.disableCull();
-		RenderSystem.setShader(GameRenderer::getRenderTypeLinesShader);
+		RenderSystem.setShader(GameRenderer::getRenderTypeLinesProgram);
 		RenderSystem.lineWidth(width);
 
 		buffer.begin(VertexFormat.DrawMode.LINES, VertexFormats.LINES);
@@ -205,7 +205,7 @@ public class RenderUtils {
 		// Line
 		RenderSystem.disableDepthTest();
 		RenderSystem.disableCull();
-		RenderSystem.setShader(GameRenderer::getRenderTypeLinesShader);
+		RenderSystem.setShader(GameRenderer::getRenderTypeLinesProgram);
 		RenderSystem.lineWidth(width);
 
 		buffer.begin(VertexFormat.DrawMode.LINES, VertexFormats.LINES);

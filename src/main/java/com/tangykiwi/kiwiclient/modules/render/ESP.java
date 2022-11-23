@@ -16,7 +16,6 @@ import com.tangykiwi.kiwiclient.util.render.shader.ColorVertexConsumerProvider;
 import com.tangykiwi.kiwiclient.util.render.shader.ShaderCore;
 import com.tangykiwi.kiwiclient.util.render.shader.ShaderEffectWrapper;
 import com.tangykiwi.kiwiclient.util.render.shader.ShaderLoader;
-import net.minecraft.client.gl.ShaderEffect;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.decoration.EndCrystalEntity;

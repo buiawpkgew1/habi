@@ -12,9 +12,8 @@ import net.minecraft.command.CommandSource;
 import net.minecraft.command.argument.EnchantmentArgumentType;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
-import net.minecraft.util.registry.Registry;
-
 import java.util.function.Function;
 
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;

@@ -14,18 +14,16 @@ import net.minecraft.block.Block;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.*;
 import net.minecraft.util.math.random.ChunkRandom;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.chunk.ChunkStatus;
 
 import java.awt.*;
 import java.util.*;
-import java.util.List;
 
 public class SeedRay extends Module {
     private final HashMap<Long, HashMap<Ore, HashSet<Vec3d>>> chunkRenderers = new HashMap<>();

@@ -22,7 +22,6 @@ import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.*;
 import net.minecraft.util.shape.VoxelShape;
 

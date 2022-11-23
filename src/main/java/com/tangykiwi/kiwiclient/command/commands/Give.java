@@ -9,8 +9,8 @@ import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.argument.ItemStackArgumentType;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.text.Text;
-import net.minecraft.util.registry.DynamicRegistryManager;
 
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
 
