@@ -42,9 +42,9 @@ dependencies {
 			"fabric-lifecycle-events-v1"
 	]
 	// Add each module as a dependency
-	//apiModules.forEach {
-	//	include(modImplementation(fabricApi.module(it, project.fabric_version)))
-	//}
+	apiModules.forEach {
+		include(modImplementation(fabricApi.module(it, project.fabric_version)))
+	}
 
 	implementation "com.github.Vatuu:discord-rpc:1.6.2"
 	include "com.github.Vatuu:discord-rpc:1.6.2"
