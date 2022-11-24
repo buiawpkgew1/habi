@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "habi",
   "version": "${version}",
 
-  "name": "Example Mod",
+  "name": "Habi",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
-    "Me!"
+    "lroj"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
@@ -19,11 +19,11 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "net.fabricmc.example.HabiMod"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "habi.mixins.json"
   ],
 
   "depends": {

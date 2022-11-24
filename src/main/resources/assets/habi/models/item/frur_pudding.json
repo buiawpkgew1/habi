@@ -1,0 +1,8 @@
+{
+    "parent":"item/generated",
+    "textures":{
+        "layer0":"habi:item/frur_pudding",
+        "x":100,
+        "Y":270
+    }
+}
