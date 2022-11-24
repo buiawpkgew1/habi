@@ -1,6 +1,5 @@
 package com.tangykiwi.kiwiclient.util.render;
 
-import Vec3f;
 import com.tangykiwi.kiwiclient.util.render.color.LineColor;
 import com.tangykiwi.kiwiclient.util.render.color.QuadColor;
 import net.minecraft.client.render.VertexConsumer;
