@@ -1,5 +1,6 @@
 package com.tangykiwi.kiwiclient.util.render;
 
+import Vec3f;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.tangykiwi.kiwiclient.util.render.color.CustomColor;
 import com.tangykiwi.kiwiclient.util.Utils;
