@@ -4,18 +4,7 @@ pluginManagement {
             name = 'Fabric'
             url = 'https://maven.fabricmc.net/'
         }
-        maven {
-        name = 'Quilt'
-        url = 'https://maven.quiltmc.org/repository/release'
-        }
-        maven {
-        name = 'Quilt Snapshots'
-        url = 'https://maven.quiltmc.org/repository/snapshot'
-        }
         mavenCentral()
         gradlePluginPortal()
     }
 }
-
-rootProject.name = 'habi'
-include('common', 'fabric', 'quilt')
