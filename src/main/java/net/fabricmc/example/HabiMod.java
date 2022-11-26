@@ -16,5 +16,6 @@ public class HabiMod implements ModInitializer {
     public static Item HABI_SED = new Item(new Item.Settings().food(ModFoodComponents.HABI_SED));
 	@Override
 	public void onInitialize() {
+        LOGGER.inof("");
 	}
 }
