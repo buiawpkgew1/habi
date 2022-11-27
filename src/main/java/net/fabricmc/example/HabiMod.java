@@ -2,11 +2,13 @@ package net.fabricmc.example;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.example.item.ModFoodComponents;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.item.*;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,11 +18,19 @@ public class HabiMod implements ModInitializer {
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LoggerFactory.getLogger("habi");
     // 新物品的实例
-    public static Item FRUIT_APP = new Item(new Item.Settings().group(ItemGroup.FOOD)
-    .food(ModFoodComponents.FRUIT_APP));
-
+    public static Item FRUIT_APP = new Item(new Item.Settings().food(ModFoodComponents.FRUIT_APP));
+    public static Item HABI_SED = new Item(new Item.Settings().food(ModFoodComponents.HABI_SED));
+    public static ItemGroup ITEM_GROUP = FabricItemGroup.builder(new Identifier("example", "test_group"))
+    .displayName(Text.literal("Example Item Group"))
+    .icon(() -> new ItemStack(Items.DIAMOND))
+    .entries((enabledFeatures, entries, operatorEnabled) -> {
+        entries.add(Items.DIAMOND);
+    })
+    .build();
 	@Override
 	public void onInitialize() {
-        Registry.register(Registry.ITEM,new Identifier("habi","frur_pudding"),FRUIT_APP);
+        Registry.register(Registries.ITEM,new Identifier("habi","app"),FRUIT_APP);
+        Registry.register(Registries.ITEM,new Identifier("habi","sed"),HABI_SED);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> entries.add(FRUIT_APP));
 	}
 }
