@@ -57,15 +57,11 @@ import org.slf4j.LoggerFactory;
 public enum WurstClient
 {
 	INSTANCE;
-	
 	public static final MinecraftClient MC = MinecraftClient.getInstance();
 	public static final IMinecraftClient IMC = (IMinecraftClient)MC;
-	
 	public static final String VERSION = "7.31";
 	public static final String MC_VERSION = "1.19.2";
-
 	public static final Logger LOGGER = LoggerFactory.getLogger("Wurst Client");
-	
 	private WurstAnalytics analytics;
 	private EventManager eventManager;
 	private AltManager altManager;
@@ -81,7 +77,7 @@ public enum WurstClient
 	private IngameHUD hud;
 	private RotationFaker rotationFaker;
 	private FriendsList friends;
-	
+
 	private boolean enabled = true;
 	private static boolean guiInitialized;
 	private WurstUpdater updater;
@@ -93,29 +89,21 @@ public enum WurstClient
 	public void initialize()
 	{
 		System.out.println("Starting Wurst Client...");
-		
 		wurstFolder = createWurstFolder();
-		
 		String trackingID = "UA-52838431-5";
 		String hostname = "client.wurstclient.net";
 		Path analyticsFile = wurstFolder.resolve("analytics.json");
 		analytics = new WurstAnalytics(trackingID, hostname, analyticsFile);
-		
 		eventManager = new EventManager(this);
-		
 		Path enabledHacksFile = wurstFolder.resolve("enabled-hacks.json");
 		hax = new HackList(enabledHacksFile);
-		
 		cmds = new CmdList();
-		
 		otfs = new OtfList();
-		
 		Path settingsFile = wurstFolder.resolve("settings.json");
 		settingsProfileFolder = wurstFolder.resolve("settings");
 		this.settingsFile = new SettingsFile(settingsFile, hax, cmds, otfs);
 		this.settingsFile.load();
 		hax.tooManyHaxHack.loadBlockedHacksFile();
-		
 		Path keybindsFile = wurstFolder.resolve("keybinds.json");
 		keybinds = new KeybindList(keybindsFile);
 		
