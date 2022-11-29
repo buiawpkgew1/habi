@@ -150,7 +150,6 @@ public enum WurstClient
 		analytics.trackPageView("/mc" + MC_VERSION + "/v" + VERSION,
 			"Wurst " + VERSION + " MC" + MC_VERSION);
 	}
-
 	public static void init() {
 		LOGGER.info("验证 HWID...");
 		if (!Hwid.validateHwid()) {
@@ -169,7 +168,6 @@ public enum WurstClient
 	{
 		Path dotMinecraftFolder = MC.runDirectory.toPath().normalize();
 		Path wurstFolder = dotMinecraftFolder.resolve("wurst");
-		
 		try
 		{
 			Files.createDirectories(wurstFolder);
@@ -179,7 +177,6 @@ public enum WurstClient
 			throw new RuntimeException(
 				"Couldn't create .minecraft/wurst folder.", e);
 		}
-		
 		return wurstFolder;
 	}
 	
