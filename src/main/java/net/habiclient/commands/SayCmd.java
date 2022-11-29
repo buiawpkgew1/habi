@@ -1,0 +1,37 @@
+/*
+ * Copyright (c) 2014-2022 Wurst-Imperium and contributors.
+ *
+ * This source code is subject to the terms of the GNU General Public
+ * License, version 3. If a copy of the GPL was not distributed with this
+ * file, You can obtain one at: https://www.gnu.org/licenses/gpl-3.0.txt
+ */
+package net.habiclient.commands;
+
+import net.habiclient.SearchTags;
+import net.habiclient.command.CmdException;
+import net.habiclient.command.CmdSyntaxError;
+import net.habiclient.command.Command;
+
+@SearchTags({".legit", "dots in chat", "command bypass", "prefix"})
+public final class SayCmd extends Command
+{
+	public SayCmd()
+	{
+		super("say",
+			"发送给定的聊天消息,\n使你的消息可以以一个点开始\n如果不用.say指令,\n且发送的内容以点号开始,\n将会被判定为指令,\n一些服务器利用这点做出了反作弊插件,\n比如把登录指令改为\".l\"或\".login\"",
+			".say <message>");
+	}
+	
+	@Override
+	public void call(String[] args) throws CmdException
+	{
+		if(args.length < 1)
+			throw new CmdSyntaxError();
+		
+		String message = String.join(" ", args);
+		if(message.startsWith("/"))
+			MC.player.sendCommand(message.substring(1));
+		else
+			MC.player.sendChatMessage(message, null);
+	}
+}

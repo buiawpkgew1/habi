@@ -1,0 +1,77 @@
+/*
+ * Copyright (c) 2014-2022 Wurst-Imperium and contributors.
+ *
+ * This source code is subject to the terms of the GNU General Public
+ * License, version 3. If a copy of the GPL was not distributed with this
+ * file, You can obtain one at: https://www.gnu.org/licenses/gpl-3.0.txt
+ */
+package net.habiclient.commands;
+
+import java.util.ArrayList;
+
+import net.habiclient.DontBlock;
+import net.habiclient.command.CmdException;
+import net.habiclient.command.CmdSyntaxError;
+import net.habiclient.command.Command;
+import net.habiclient.util.ChatUtils;
+import net.habiclient.util.MathUtils;
+
+@DontBlock
+public final class HelpCmd extends Command
+{
+	private static final int CMDS_PER_PAGE = 8;
+	
+	public HelpCmd()
+	{
+		super("help", "显示某个指令的使用方法,\n或显示指令列表",
+			".help <需要查看方法的指令>", "指令列表: .help [<页数>]");
+	}
+	
+	@Override
+	public void call(String[] args) throws CmdException
+	{
+		if(args.length > 1)
+			throw new CmdSyntaxError();
+		
+		String arg = args.length > 0 ? args[0] : "1";
+		
+		if(MathUtils.isInteger(arg))
+			listCommands(Integer.parseInt(arg));
+		else
+			help(arg);
+	}
+	
+	private void listCommands(int page) throws CmdException
+	{
+		ArrayList<Command> cmds = new ArrayList<>(WURST.getCmds().getAllCmds());
+		int pages = (int)Math.ceil(cmds.size() / (double)CMDS_PER_PAGE);
+		pages = Math.max(pages, 1);
+		
+		if(page > pages || page < 1)
+			throw new CmdSyntaxError("无效页面: " + page);
+		
+		String total = "合计: " + cmds.size() + " 命令";
+		total += cmds.size() != 1 ? "s" : "";
+		ChatUtils.message(total);
+		
+		int start = (page - 1) * CMDS_PER_PAGE;
+		int end = Math.min(page * CMDS_PER_PAGE, cmds.size());
+		
+		ChatUtils.message("命令列表 (页码 " + page + "/" + pages + ")");
+		for(int i = start; i < end; i++)
+			ChatUtils.message("- " + cmds.get(i).getName());
+	}
+	
+	private void help(String cmdName) throws CmdException
+	{
+		if(cmdName.startsWith("."))
+			cmdName = cmdName.substring(1);
+		
+		Command cmd = WURST.getCmds().getCmdByName(cmdName);
+		if(cmd == null)
+			throw new CmdSyntaxError("未知的命令: ." + cmdName);
+		
+		ChatUtils.message("可用的帮助 ." + cmdName + ":");
+		cmd.printHelp();
+	}
+}

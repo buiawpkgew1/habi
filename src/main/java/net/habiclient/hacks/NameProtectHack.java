@@ -1,0 +1,56 @@
+/*
+ * Copyright (c) 2014-2022 Wurst-Imperium and contributors.
+ *
+ * This source code is subject to the terms of the GNU General Public
+ * License, version 3. If a copy of the GPL was not distributed with this
+ * file, You can obtain one at: https://www.gnu.org/licenses/gpl-3.0.txt
+ */
+package net.habiclient.hacks;
+
+import net.minecraft.client.network.AbstractClientPlayerEntity;
+import net.minecraft.client.network.PlayerListEntry;
+import net.habiclient.Category;
+import net.habiclient.SearchTags;
+import net.habiclient.hack.Hack;
+
+@SearchTags({"name protect"})
+public final class NameProtectHack extends Hack
+{
+	public NameProtectHack()
+	{
+		super("名字保护器");
+		setCategory(Category.RENDER);
+	}
+	
+	public String protect(String string)
+	{
+		if(!isEnabled() || MC.player == null)
+			return string;
+		
+		String me = MC.getSession().getUsername();
+		if(string.contains(me))
+			return string.replace(me, "\u00a7o我自己\u00a7r");
+		
+		int i = 0;
+		for(PlayerListEntry info : MC.player.networkHandler.getPlayerList())
+		{
+			i++;
+			String name =
+				info.getProfile().getName().replaceAll("\u00a7(?:\\w|\\d)", "");
+			
+			if(string.contains(name))
+				return string.replace(name, "\u00a7o玩家" + i + "\u00a7r");
+		}
+		
+		for(AbstractClientPlayerEntity player : MC.world.getPlayers())
+		{
+			i++;
+			String name = player.getName().getString();
+			
+			if(string.contains(name))
+				return string.replace(name, "\u00a7o玩家" + i + "\u00a7r");
+		}
+		
+		return string;
+	}
+}

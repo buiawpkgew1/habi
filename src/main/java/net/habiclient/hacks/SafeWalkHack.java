@@ -1,0 +1,81 @@
+/*
+ * Copyright (c) 2014-2022 Wurst-Imperium and contributors.
+ *
+ * This source code is subject to the terms of the GNU General Public
+ * License, version 3. If a copy of the GPL was not distributed with this
+ * file, You can obtain one at: https://www.gnu.org/licenses/gpl-3.0.txt
+ */
+package net.habiclient.hacks;
+
+import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.option.KeyBinding;
+import net.minecraft.util.math.Box;
+import net.habiclient.Category;
+import net.habiclient.SearchTags;
+import net.habiclient.hack.Hack;
+import net.habiclient.mixinterface.IKeyBinding;
+import net.habiclient.settings.CheckboxSetting;
+
+@SearchTags({"safe walk"})
+public final class SafeWalkHack extends Hack
+{
+	private final CheckboxSetting sneak =
+		new CheckboxSetting("在边缘潜行", "可以在边缘的时候可视你潜行动作", false);
+	
+	private boolean sneaking;
+	
+	public SafeWalkHack()
+	{
+		super("安全走路");
+		setCategory(Category.MOVEMENT);
+		addSetting(sneak);
+	}
+	
+	@Override
+	protected void onEnable()
+	{
+		WURST.getHax().parkourHack.setEnabled(false);
+		sneaking = false;
+	}
+	
+	@Override
+	protected void onDisable()
+	{
+		if(sneaking)
+			setSneaking(false);
+	}
+	
+	public void onClipAtLedge(boolean clipping)
+	{
+		if(!isEnabled() || !sneak.isChecked() || !MC.player.isOnGround())
+		{
+			if(sneaking)
+				setSneaking(false);
+			
+			return;
+		}
+		
+		ClientPlayerEntity player = MC.player;
+		Box bb = player.getBoundingBox();
+		float stepHeight = player.stepHeight;
+		
+		for(double x = -0.05; x <= 0.05; x += 0.05)
+			for(double z = -0.05; z <= 0.05; z += 0.05)
+				if(MC.world.isSpaceEmpty(player, bb.offset(x, -stepHeight, z)))
+					clipping = true;
+				
+		setSneaking(clipping);
+	}
+	
+	private void setSneaking(boolean sneaking)
+	{
+		IKeyBinding sneakKey = (IKeyBinding)MC.options.sneakKey;
+		
+		if(sneaking)
+			((KeyBinding)sneakKey).setPressed(true);
+		else
+			((KeyBinding)sneakKey).setPressed(sneakKey.isActallyPressed());
+		
+		this.sneaking = sneaking;
+	}
+}

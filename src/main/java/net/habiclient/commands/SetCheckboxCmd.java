@@ -1,0 +1,100 @@
+/*
+ * Copyright (c) 2014-2022 Wurst-Imperium and contributors.
+ *
+ * This source code is subject to the terms of the GNU General Public
+ * License, version 3. If a copy of the GPL was not distributed with this
+ * file, You can obtain one at: https://www.gnu.org/licenses/gpl-3.0.txt
+ */
+package net.habiclient.commands;
+
+import java.util.stream.Stream;
+
+import net.habiclient.DontBlock;
+import net.habiclient.Feature;
+import net.habiclient.command.CmdError;
+import net.habiclient.command.CmdException;
+import net.habiclient.command.CmdSyntaxError;
+import net.habiclient.command.Command;
+import net.habiclient.settings.CheckboxSetting;
+import net.habiclient.settings.Setting;
+
+@DontBlock
+public final class SetCheckboxCmd extends Command
+{
+	public SetCheckboxCmd()
+	{
+		super("setcheckbox",
+			"通过指令更改功能复选框设置(子选项设置)",
+			".setcheckbox <feature> <setting> (on|off)",
+			".setcheckbox <feature> <setting> toggle");
+	}
+	
+	@Override
+	public void call(String[] args) throws CmdException
+	{
+		if(args.length != 3)
+			throw new CmdSyntaxError();
+		
+		Feature feature = findFeature(args[0]);
+		Setting setting = findSetting(feature, args[1]);
+		CheckboxSetting checkbox = getAsCheckbox(feature, setting);
+		setChecked(checkbox, args[2]);
+	}
+	
+	private Feature findFeature(String name) throws CmdError
+	{
+		Stream<Feature> stream = WURST.getNavigator().getList().stream();
+		stream = stream.filter(f -> name.equalsIgnoreCase(f.getName()));
+		Feature feature = stream.findFirst().orElse(null);
+		
+		if(feature == null)
+			throw new CmdError(
+				"A feature named \"" + name + "\" could not be found.");
+		
+		return feature;
+	}
+	
+	private Setting findSetting(Feature feature, String name) throws CmdError
+	{
+		name = name.replace("_", " ").toLowerCase();
+		Setting setting = feature.getSettings().get(name);
+		
+		if(setting == null)
+			throw new CmdError("A setting named \"" + name
+				+ "\" could not be found in " + feature.getName() + ".");
+		
+		return setting;
+	}
+	
+	private CheckboxSetting getAsCheckbox(Feature feature, Setting setting)
+		throws CmdError
+	{
+		if(!(setting instanceof CheckboxSetting))
+			throw new CmdError(feature.getName() + " " + setting.getName()
+				+ " 不是一个 checkbox 设置.");
+		
+		return (CheckboxSetting)setting;
+	}
+	
+	private void setChecked(CheckboxSetting checkbox, String value)
+		throws CmdSyntaxError
+	{
+		switch(value.toLowerCase())
+		{
+			case "on":
+			checkbox.setChecked(true);
+			break;
+			
+			case "off":
+			checkbox.setChecked(false);
+			break;
+			
+			case "toggle":
+			checkbox.setChecked(!checkbox.isChecked());
+			break;
+			
+			default:
+			throw new CmdSyntaxError();
+		}
+	}
+}

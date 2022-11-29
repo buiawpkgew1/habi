@@ -1,0 +1,39 @@
+/*
+ * Copyright (c) 2014-2022 Wurst-Imperium and contributors.
+ *
+ * This source code is subject to the terms of the GNU General Public
+ * License, version 3. If a copy of the GPL was not distributed with this
+ * file, You can obtain one at: https://www.gnu.org/licenses/gpl-3.0.txt
+ */
+package net.habiclient.other_features;
+
+import net.minecraft.util.Util;
+import net.habiclient.DontBlock;
+import net.habiclient.SearchTags;
+import net.habiclient.WurstClient;
+import net.habiclient.other_feature.OtherFeature;
+import net.habiclient.update.Version;
+
+@SearchTags({"change log", "wurst update", "release notes", "what's new",
+	"what is new", "new features", "recently added features"})
+@DontBlock
+public final class ChangelogOtf extends OtherFeature
+{
+	public ChangelogOtf()
+	{
+		super("更新日志", "打开更新日志在浏览器中");
+	}
+	
+	@Override
+	public String getPrimaryAction()
+	{
+		return "查看更新日志";
+	}
+	
+	@Override
+	public void doPrimaryAction()
+	{
+		String link = new Version(WurstClient.VERSION).getChangelogLink();
+		Util.getOperatingSystem().open(link);
+	}
+}
