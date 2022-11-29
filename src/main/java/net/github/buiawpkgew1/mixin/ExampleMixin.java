@@ -1,6 +1,6 @@
-package net.fabricmc.example.mixin;
+package net.github.buiawpkgew1.mixin;
 
-import net.fabricmc.example.HabiMod;
+import net.github.buiawpkgew1.HabiMod;
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
