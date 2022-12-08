@@ -29,8 +29,8 @@ public class HabiMod implements ModInitializer {
     .build();
 	@Override
 	public void onInitialize() {
-        Registry.register(Registries.ITEM,new Identifier("habi","app"),FRUIT_APP);
-        Registry.register(Registries.ITEM,new Identifier("habi","sed"),HABI_SED);
+        Registry.register(Registries.ITEM,new Identifier("habit","app"),FRUIT_APP);
+        Registry.register(Registries.ITEM,new Identifier("habit","sed"),HABI_SED);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> entries.add(FRUIT_APP));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> entries.add(FRUIT_APP));
 	}
