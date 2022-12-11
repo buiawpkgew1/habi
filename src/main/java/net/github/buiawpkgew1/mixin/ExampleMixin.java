@@ -13,4 +13,5 @@ public class ExampleMixin {
 	private void init(CallbackInfo info) {
         HabiMod.LOGGER.info("这一行是由示例mod mixin打印的!");
 	}
+
 }
