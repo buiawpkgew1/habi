@@ -20,7 +20,7 @@ public class HabiMod implements ModInitializer {
     public static Item FRUIT_APP = new Item(new Item.Settings().food(ModFoodComponents.FRUIT_APP));
     public static Item HABI_SED = new Item(new Item.Settings().food(ModFoodComponents.HABI_SED));
     public static ItemGroup ITEM_GROUP = FabricItemGroup.builder(new Identifier("example", "test_group"))
-    .displayName(Text.literal(I18n.translate("habit.group.1")))
+    .displayName(Text.literal("habit.group.1"))
     .icon(() -> new ItemStack(Items.DIAMOND))
     .entries((enabledFeatures, entries, operatorEnabled) -> {
         entries.add(Items.DIAMOND);
