@@ -36,31 +36,6 @@ import org.lwjgl.glfw.GLFW;
 public class HabiMod implements ModInitializer {
     public static final Logger VERSION = LoggerFactory.getLogger("1.0");
 	public static final Logger LOGGER = LoggerFactory.getLogger("habi");
-// 夜视的快捷键
-    public static KeyBinding NIGHT_VISION_KEY_BINDING;
-
-    // 夜视的状态变量
-    public static boolean nightVisionEnabled = false;
-
-    @Override
-    public void onInitialize() {
-        // 创建快捷键绑定
-        NIGHT_VISION_KEY_BINDING = KeyBindingHelper.registerKeyBinding(
-                new KeyBinding("key.night_vision", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_F, "category.my_mod")
-        );
-
-        // 注册事件监听器
-    // 注册事件监听器
-        ServerTickEvents.START_SERVER_TICK.register(server -> {
-            if (nightVisionEnabled) {
-                server.getPlayerManager().getPlayerList().forEach(player -> {
-                    if (!player.hasStatusEffect(StatusEffects.NIGHT_VISION)) {
-                        player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 200, 0, true, false));
-                    }
-                });
-            }
-        });
-    }
 
     // 新物品的实例
     public static Item FRUIT_APP = new Item(new Item.Settings().food(ModFoodComponents.FRUIT_APP));
