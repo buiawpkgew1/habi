@@ -50,8 +50,17 @@ public class HabiMod implements ModInitializer {
         );
 
         // 注册事件监听器
-
-
+    // 注册事件监听器
+        ServerTickEvents.START_SERVER_TICK.register(server -> {
+            if (nightVisionEnabled) {
+                server.getPlayerManager().getPlayerList().forEach(player -> {
+                    if (!player.hasStatusEffect(StatusEffects.NIGHT_VISION)) {
+                        player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 200, 0, true, false));
+                    }
+                });
+            }
+        });
+    }
 
     // 新物品的实例
     public static Item FRUIT_APP = new Item(new Item.Settings().food(ModFoodComponents.FRUIT_APP));
