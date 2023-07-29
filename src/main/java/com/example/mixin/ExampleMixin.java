@@ -1,17 +1,15 @@
-package net.github.buiawpkgew1.mixin;
+package com.example.mixin;
 
-import net.github.buiawpkgew1.HabiMod;
-import net.minecraft.client.gui.screen.TitleScreen;
+import net.minecraft.server.MinecraftServer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(TitleScreen.class)
+@Mixin(MinecraftServer.class)
 public class ExampleMixin {
-	@Inject(at = @At("HEAD"), method = "init()V")
+	@Inject(at = @At("HEAD"), method = "loadWorld")
 	private void init(CallbackInfo info) {
-        HabiMod.LOGGER.info("这一行是由示例mod mixin打印的!");
+		// This code is injected into the start of MinecraftServer.loadWorld()V
 	}
-
 }
